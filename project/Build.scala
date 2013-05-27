@@ -1,10 +1,8 @@
 import sbt._
 import Keys._
 
-import java.io.{File, FileReader}
-import java.util.Properties
+import java.io.File
 
-import fm.last.ivy.plugins.svnresolver.SvnResolver
 
 object StandardProjectPlugin extends Build {
   lazy val root = Project(
@@ -15,7 +13,17 @@ object StandardProjectPlugin extends Build {
     name := "sbt-package-dist",
     version := "1.1.0-SNAPSHOT",
     sbtPlugin := true,
-    libraryDependencies ++= Seq (
+    publishTo := Some(Resolver.file("file", new File(Path.userHome.absolutePath + "/.ivy2/local"))),
+    publishMavenStyle := true,
+    pomExtra :=
+      <licenses>
+        <license>
+          <name>Apache 2</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>,
+    libraryDependencies ++= Seq(
       "ivysvn" % "ivysvn" % "2.1.0",
       "org.markdownj" % "markdownj" % "0.3.0-1.0.2b4",
       "org.freemarker" % "freemarker" % "2.3.16"
