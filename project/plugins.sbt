@@ -27,4 +27,4 @@ resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositori
 
 addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.4.0")
 
-addSbtPlugin("com.twitter" %% "sbt-package-dist" % "1.1.0-SNAPSHOT")
+//addSbtPlugin("com.twitter" %% "sbt-package-dist" % "1.1.0-SNAPSHOT")
